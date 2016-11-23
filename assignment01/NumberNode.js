@@ -1,8 +1,7 @@
 var converter = require('number-to-words');
 
 var NumberNode = function(number) {
-	this.value = Number(number);
-	this.type = 'number';
+	this.value = number;
 };
 
 NumberNode.prototype = {

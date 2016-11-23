@@ -1,8 +1,10 @@
 %{
 
-var Tree = require('/Users/durgaman/IdeaProjects/jison/jison-Assignments/assignment01/Tree.js')
-var NumberNode = require('/Users/durgaman/IdeaProjects/jison/jison-Assignments/assignment01/NumberNode.js')
-var Root = require('/Users/durgaman/IdeaProjects/jison/jison-Assignments/assignment01/RootNode.js')
+var path = require('path')
+
+var Tree = require(path.resolve('./Tree.js'))
+var NumberNode = require(path.resolve('./NumberNode.js'))
+var Root = require(path.resolve('./RootNode.js'))
 
 %}
 
@@ -30,7 +32,7 @@ var Root = require('/Users/durgaman/IdeaProjects/jison/jison-Assignments/assignm
 
 expressions
     : e EOF
-        {return $$; }
+        {console.log($$);return $$; }
     ;
 
 e
@@ -41,6 +43,6 @@ e
     | e '*' e
         {$$= new Tree($1,new Root($2),$3);}
     | NUMBER
-        {$$ = new NumberNode(yytext)}
+        {$$ = new NumberNode(Number(yytext))}
     | VARIABLE
     ;
